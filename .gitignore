@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtualenv
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# SQLite (если вдруг тестировал)
+*.db
+*.sqlite3
+
+# Docker
+*.pid
+
+# Alembic
+alembic/__pycache__/
+
+# Pytest / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Poetry
+poetry.lock
+
+# Pip-tools
+*.in
