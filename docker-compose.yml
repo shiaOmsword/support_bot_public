@@ -1,6 +1,11 @@
 services:
   db:
     image: postgres:16-alpine
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"    
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
@@ -17,6 +22,11 @@ services:
 
   bot:
     build: .
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"    
     depends_on:
       db:
         condition: service_healthy
@@ -25,6 +35,13 @@ services:
     volumes:
       - .:/app
     restart: unless-stopped
+
+  migrate:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    command: alembic upgrade head    
 
 volumes:
   pgdata:
