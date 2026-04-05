@@ -18,7 +18,12 @@ class Container:
     bot_state_repo: BotStateRepository
 
 def build_container() -> Container:
-    engine = create_async_engine(settings.database_url, echo=False)
+    engine = create_async_engine(
+        settings.database_url,
+        echo=False,
+        pool_pre_ping=True,
+        pool_recycle=300,
+    )
     session_factory = async_sessionmaker(engine, expire_on_commit=False)
 
     uow = UnitOfWork(session_factory)

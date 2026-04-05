@@ -16,4 +16,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # по умолчанию запускаем бота
-CMD ["python", "main.py"]
+CMD ["sh", "-c", "alembic upgrade head && python main.py"]
