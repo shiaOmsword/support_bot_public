@@ -1,7 +1,6 @@
 services:
   db:
     image: postgres:16-alpine
-<<<<<<< HEAD
     restart: unless-stopped
     env_file:
       - .env
@@ -10,19 +9,6 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-=======
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"    
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: support_bot
-    ports:
-      - "5432:5432"
->>>>>>> 413aba45007845fb42e1a48b4cf865fa6b7fd4c5
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -33,7 +19,6 @@ services:
 
   bot:
     build: .
-<<<<<<< HEAD
     restart: unless-stopped
     env_file:
       - .env
@@ -42,40 +27,12 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-=======
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"    
->>>>>>> 413aba45007845fb42e1a48b4cf865fa6b7fd4c5
     depends_on:
       db:
         condition: service_healthy
     volumes:
       - .:/app
 
-  migrate:
-    build: .
-    restart: "no"
-    env_file:
-      - .env
-    depends_on:
-      db:
-        condition: service_healthy
-    command: alembic upgrade head
-
-  migrate:
-    build: .
-    depends_on:
-      db:
-        condition: service_healthy
-    command: alembic upgrade head    
-
 volumes:
-<<<<<<< HEAD
   pgdata:
     name: support_bot_pgdata
-=======
-  pgdata:
->>>>>>> 413aba45007845fb42e1a48b4cf865fa6b7fd4c5
