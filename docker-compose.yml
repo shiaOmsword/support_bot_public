@@ -32,6 +32,8 @@ services:
         condition: service_healthy
     volumes:
       - .:/app
+      - .:/presentation
+      - .:/infrastructure
 
 volumes:
   pgdata:

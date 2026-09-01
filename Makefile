@@ -1,5 +1,5 @@
 .PHONY: up down restart build logs shell ps pull deploy
-SERVICE=WEB
+SERVICE=bot
 # Поднять контейнеры
 up:
 	docker compose up -d
